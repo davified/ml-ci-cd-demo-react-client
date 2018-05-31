@@ -17,6 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1>Sentiment Classifier</h1>
         <InputForm handleSubmit={this.handleSubmit.bind(this)} />
         {this.state.sentiment === "positive" && <PositiveSentiment />}
         {this.state.sentiment === "negative" && <NegativeSentiment />}

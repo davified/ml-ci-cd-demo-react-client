@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { FormGroup, FormControl, Button } from "react-bootstrap";
 
 class InputForm extends Component {
   constructor() {
@@ -8,30 +8,32 @@ class InputForm extends Component {
       input: ""
     };
   }
+
   render() {
     return (
       <div>
-        <Form onSubmit={this.handleSubmit.bind(this)}>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <FormGroup>
-            <Label for="exampleEmail">Email</Label>
-            <Input
+            <FormControl
               type="textarea"
-              placeholder="type something (e.g. this is great!, or this thing sucks!!"
+              id="form-content"
               value={this.state.value}
+              placeholder="e.g. this is great!, or this thing sucks!!"
               onChange={this.handleChange.bind(this)}
             />
+            <FormControl.Feedback />
+            <Button onClick={this.handleSubmit.bind(this)}>
+              Get sentiment prediction
+            </Button>
           </FormGroup>
-          <Button>Submit</Button>
-        </Form>
+        </form>
       </div>
     );
   }
 
   handleSubmit(event) {
-    console.log("handleSubmit()");
-    console.log(this.input.value);
     event.preventDefault();
-    this.props.handleSubmit(this.input.value);
+    this.props.handleSubmit(this.state.input);
   }
 
   handleChange(event) {

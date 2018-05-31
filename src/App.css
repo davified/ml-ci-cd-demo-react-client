@@ -29,11 +29,15 @@
 }
 
 #form-content {
-  height: 300px;
+  height: 100px;
   margin-bottom: 20px
 }
 
 .sentiment-box {
-  font-size: 10em;
+  font-size: 5em;
   height: 300px;
+}
+
+#sentiment-icon {
+  width: 100px
 }

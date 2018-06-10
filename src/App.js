@@ -24,8 +24,6 @@ class App extends Component {
         {this.state.sentiment === "positive" && <PositiveSentiment />}
         {this.state.sentiment === "negative" && <NegativeSentiment />}
         {this.state.isLoading && <Loading />}
-        {/* {<Loading />}
-        <NegativeSentiment /> */}
       </div>
     );
   }

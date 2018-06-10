@@ -41,3 +41,8 @@
 #sentiment-icon {
   width: 100px
 }
+
+#loading-icon {
+  height: 150px;
+  padding-left: 50px
+}

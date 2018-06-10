@@ -3,6 +3,7 @@ import { URL } from "./utils";
 import InputForm from "./InputForm";
 import PositiveSentiment from "./PositiveSentiment";
 import NegativeSentiment from "./NegativeSentiment";
+import Loading from "./Loading";
 
 import "./App.css";
 
@@ -10,7 +11,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      sentiment: ""
+      sentiment: "",
+      isLoading: false
     };
   }
 
@@ -21,11 +23,15 @@ class App extends Component {
         <InputForm handleSubmit={this.handleSubmit.bind(this)} />
         {this.state.sentiment === "positive" && <PositiveSentiment />}
         {this.state.sentiment === "negative" && <NegativeSentiment />}
+        {this.state.isLoading && <Loading />}
+        {/* {<Loading />}
+        <NegativeSentiment /> */}
       </div>
     );
   }
 
   async handleSubmit(userInput) {
+    this.setState({ isLoading: true, sentiment: "" });
     const data = {
       input: userInput
     };
@@ -37,10 +43,11 @@ class App extends Component {
       method: "POST"
     });
     const sentiment = await response.json();
-    this.setState({ sentiment });
+    this.setState({
+      sentiment,
+      isLoading: false
+    });
   }
-
-  async componentDidMount() {}
 }
 
 export default App;
